@@ -1,0 +1,73 @@
+
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-area">
+                            <h1 *ngIf="service" > {{ service.nom_service }} </h1>
+                            <ul>
+                                <li><a [routerLink]="['/']">acceuil</a></li>
+                                <li>/</li>
+                                <li *ngIf="service">
+                                  {{ service.nom_service }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+
+        <!-- Services section start -->
+        <section class="p-t-100 p-b-100 section-white">
+            <div class="container">
+                <div class="row" *ngIf="service">
+
+                            <div style="height: 350px;padding: 0;" class="col-md-6">
+                                <img style="
+                                width: 100%;
+                                height: 100%;
+                            " src="{{ global.apiURL}}/{{   getImage(service.image) }}" alt="">
+                            </div>
+
+                            <div  style="height: 350px"  class="col-md-6">
+                                <p [innerHTML]="service.designation_service">
+
+                                </p>
+                            </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+        <!-- Services section end -->
+
+        <!-- Newsletter section start -->
+        <section class="newsletter-sec p-t-50 p-b-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>
+                          obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="input-group newsletter">
+                            <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter section end -->
+

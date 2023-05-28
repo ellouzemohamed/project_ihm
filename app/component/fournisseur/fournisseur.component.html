@@ -1,0 +1,109 @@
+      <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-area">
+                            <h1>Fournisseur détail</h1>
+                            <ul>
+                                <li><a [routerLink]="['/home']"  >Home</a></li>
+                                <li>/</li>
+                                <li>Fournisseur détail</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+           <!-- Team detail section start -->
+           <section class="p-t-100 p-b-100 section-white">
+            <div class="container" *ngIf="fournisseur">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Team detail start -->
+                        <div class="member-img">
+                            <img style="    width: 348px;
+                            height: 464px;" src="{{ global.apiURL +  fournisseur.image }}" alt="Team">
+                        </div>
+                        <div class="team-details">
+                            <ul>
+
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span>
+                                        <a href="mailto:{{ fournisseur.email_fourn }}"> {{ fournisseur.email_fourn }}</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-facebook"></i>
+                                    <span>
+                                        <a href="{{ fournisseur.facebook }}">{{ fournisseur.nom_fourn }} {{ fournisseur.prenom_fourn }}</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <span>
+                                        <a href="tel:{{ fournisseur.tel_fourn }}"> {{ fournisseur.tel_fourn }}</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <span> <a href="{{ fournisseur.adresse_fourn }}">Adresse</a></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End of Team detail -->
+                    </div>
+
+                    <div class="col-md-8 team-person">
+                        <!-- Team member section start -->
+                        <h2>Mr. {{ fournisseur.nom_fourn }} {{ fournisseur.prenom_fourn }}</h2>
+                        <span class="member-designation">{{ fournisseur.service.nom_service }}</span>
+                        <div class="social-links">
+                            <ul>
+                              <style>
+                                .etoile {
+                                  display: inline;    background: none;
+                                }
+                              </style>
+                                <li [innerHTML]="setRate()" >
+
+                                </li>
+
+                            </ul>
+                        </div>
+                        <p>
+                            {{ fournisseur.description }}
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Team detail section end -->
+
+        <!-- Newsletter section start -->
+        <section class="newsletter-sec p-t-50 p-b-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>
+                          obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="input-group newsletter">
+                            <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter section end -->

@@ -1,0 +1,109 @@
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="breadcrumb-area">
+                            <h1>Fournisseurs</h1>
+                            <ul>
+                                <li><a href="index-2.html">acceuil</a></li>
+                                <li>/</li>
+                                <li>Fournisseurs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="    background: transparent;
+                " class="col-md-4 blog-widget">
+
+                        <!-- <form> -->
+                            <select (change)="setSelect($event.srcElement.value)"  *ngIf="services" name="service" id="" class="form-control">
+                                  <option value="">Choisir Service</option>
+                                  <option *ngFor="let item of services" value="{{item.id_service}}">{{item.nom_service}}</option>
+                            </select>
+                            <input (change)="setInput($event.srcElement.value)"   style="    background: transparent;margin-top: 20px;
+                            color: white;" name="search"  placeholder="Keywords..." type="search">
+                            <button type="submit" style="margin-top: 66px;
+                            max-height: 42px;
+                            max-width: 35px;">
+                                <i style="position: absolute;
+                                top: 13px;
+                                left: 12px;" class="fa fa-search"></i>
+                            </button>
+                        <!-- </form> -->
+                </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+        <section class=" projects section-white">
+            <div class="row" >
+                <div id="googleMap" class="col-md-11" style="height: 439px;">
+
+                </div>
+            </div>
+        </section>
+        <!-- Team section start -->
+        <section class="p-t-100 p-b-100 projects section-white">
+            <div class="container">
+                <div *ngIf="fournisseurs" class="row">
+
+                        <div *ngFor="let fournisseur of fournisseurs" class="col-md-3">
+                            <div class="team-area">
+
+                                <img style="height:319px" src="{{  getImage( fournisseur.image)  }}" alt="Team">
+                                <div class="team-detail">
+                                    <div class="social-links">
+                                        <ul>
+                                            <li><a target="_blank" href="{{ fournisseur.facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a target="_blank" href="{{ fournisseur.adresse_fourn }}"><i class="fa fa-map-marker"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                                            <li><a href="mailto:{{ fournisseur.email_fourn  }}"><i class="fa fa-envelope"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h4>
+                                    <a class="nomFourn" [routerLink]="['/fournisseur/' + fournisseur.id_fourn]" >{{ fournisseur.nom_fourn + ' ' + fournisseur.prenom_fourn }}</a>
+                                </h4>
+                                <p>{{ fournisseur.service.nom_service }}</p>
+
+                                <a style="    margin-left: 15%;        margin-bottom: 20px;" [routerLink]="['/new/appel/offre?service=' + fournisseur.service.id_service]"   class="wprt-button small rounded-3px">Passer un appel d'offre</a>
+
+
+                            </div>
+                        </div>
+
+                    <style>
+                        .nomFourn:hover{
+                            text-decoration: underline;
+                      }
+                    </style>
+                </div>
+            </div>
+        </section>
+        <!-- Team section end -->
+
+        <!-- Newsletter section start -->
+        <section class="newsletter-sec p-t-50 p-b-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>
+                          obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="input-group newsletter">
+                            <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter section end -->
+

@@ -1,0 +1,142 @@
+<!-- Login/Signup popup start -->
+<div id="myModal" class="modal fade appointment" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="close" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Veuillez vous connecter ou vous inscrire</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#login">connexion</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#register">inscription</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="login" class="tab-pane fade in active">
+                        <form [formGroup]="controls" (ngSubmit)="login()">
+                            <div *ngIf="errors" class="alert alert-danger">
+                                <ul>
+                                    <li> verifier vos données </li>
+                                </ul>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="email" type="email" name="email" placeholder="Your email">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-lock" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="password" type="password" name="password" placeholder="Your password">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="remember-me">
+                                    <label>
+                                          <input type="checkbox" formControlName ="Remember" name="checkbox">
+                                         Se souvient de moi
+                                      </label>
+                                </div>
+                                <div class="forgot-password">
+                                    <a href="%21.html#">mot de passe oublié ?</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="input-fields">
+                                <div style="    margin-top: 20px;" class="remember-me">
+                                    <a target="_blank" href="{{global.apiURL}}fournisseurs/login">Se connecter comme Fournisseur </a>
+                                </div>
+                                <div class="forgot-password">
+                                    <input type="submit" (click)="login()" value="Connexion" class="form-submit">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="register" class="tab-pane fade">
+                        <form [formGroup]="formdataRegister" (ngSubmit)="onClickSubmit(formdataRegister.value)">
+                            <div class="alert alert-danger" *ngIf="errors">
+                                <ul>
+                                    <li *ngIf="errors.name">{{errors.name[0]}}</li>
+                                    <li *ngIf="errors.username">{{errors.username[0]}}</li>
+                                    <li *ngIf="errors.email">{{errors.email[0]}}</li>
+                                    <li *ngIf="errors.password">{{errors.password[0]}}</li>
+                                </ul>
+                            </div>
+                            <div class="alert alert-success" *ngIf="successControll">
+                                <ul>
+                                    <li>merci pour votre inscription s'il vous plait Vérifier votre email </li>
+                                </ul>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-user" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="name" type="text" name="name" placeholder="Your name">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-user" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="username" type="text" name="username" placeholder="Your username">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="email" type="email" name="email" placeholder="Your email">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-lock" aria-hidden="true"></i>
+                                      </span>
+                                    <input formControlName="password" type="password" name="password" placeholder="Your password">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                          <i class="fa fa-lock" aria-hidden="true"></i>
+                                      </span>
+                                    <input type="password" name="password" placeholder="Confirm password">
+                                </div>
+                            </div>
+                            <div class="input-fields">
+                                <div class="remember-me">
+                                    <label>
+                                          <input formControlName="isfournisseur" type="checkbox" name="checkbox">
+                                          S'inscrire comme Fournisseur.
+                                      </label>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="input-fields">
+                                <input [disabled]="!formdataRegister.valid" type="submit" value="Create an account" class="form-submit">
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login/Signup popup end -->

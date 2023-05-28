@@ -1,0 +1,150 @@
+
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-area">
+                            <h1>Contact  </h1>
+                            <ul>
+                              <li><a [routerLink]="['/']">acceuil</a></li>
+                              <li>/</li>
+                                <li>Contact  </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+
+        <!-- Contact page section start -->
+        <section class="contact-us section-light-grey p-t-70 p-b-70">
+            <div class="container">
+                <div class="row m-t-20">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="address-block m-t-0">
+                            <div class="address-icon">
+                                <i class="fa fa-phone text-center"></i>
+                            </div>
+                            <div class="address-text">
+                                <h5>Telephone</h5>
+                                <p>(+216) 97 559 344 </p>
+                                <p>(+216) 25 702 817</p>
+                            </div>
+                        </div>
+                        <div class="address-block m-t-20">
+                            <div class="address-icon">
+                                <i class="fa fa-envelope text-center"></i>
+                            </div>
+                            <div class="address-text">
+                                <h5>Email</h5>
+                                <p>contact@bestsol.tn</p>
+
+                            </div>
+                        </div>
+                        <div class="address-block m-t-20">
+                            <div class="address-icon">
+                                <i class="fa fa-home text-center"></i>
+                            </div>
+                            <div class="address-text">
+                                <h5>Address</h5>
+                                <span>Route de Tunis Monji Slim<br>Imm Amen2 B9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="quote-form m-b-30">
+                            <form [formGroup]="formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
+                              <div class="alert alert-danger" *ngIf="errors">
+                                <ul>
+                                  <li *ngIf="errors.nom">{{errors.nom[0]}}</li>
+                                  <li *ngIf="errors.sujet">{{errors.sujet[0]}}</li>
+                                  <li *ngIf="errors.email">{{errors.email[0]}}</li>
+                                  <li *ngIf="errors.message">{{errors.message[0]}}</li>
+                                  <li *ngIf="errors.numero">{{errors.numero[0]}}</li>
+
+                                </ul>
+                              </div>
+                              <div class="alert alert-success" *ngIf="successControll">
+                                <ul>
+                                  <li>votre message a été envoyé</li>
+                                </ul>
+                              </div>
+                                <div id="msgSubmit" class="alert-danger alert hidden"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>
+                                            <label>Your Name</label>
+                                            <input formControlName="nom" type="text" name="nom" id="name" placeholder="Your Name" title="* Please provide your name" required="required">
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            <label>Email Address</label>
+                                            <input formControlName="email" type="email" name="email" id="email" placeholder="Your Email Address" title="* Please provide your email address" required="required">
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>
+                                            <label>Subject</label>
+                                            <input formControlName="sujet" type="text" id="subject" name="sujet" placeholder="Subject"  title="* Please provide a subject">
+                                        </p>
+                                        <p>
+                                            <label>Mobile</label>
+                                            <input  formControlName="numero" type="text" id="mobile" name="numero"  placeholder="Mobile" title="* Provide your mobile no" required="required">
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            <label>Your Message</label>
+                                            <textarea formControlName="message" name="message" id="message" placeholder="Comment" title="* Please type a message"></textarea>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            <input type="submit" id="form-submit" [disabled] = "!formdata.valid" value="Envoyer">
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact page section end -->
+
+        <!-- Google map section start -->
+        <div id="googleMap"></div>
+        <!-- Google map section end -->
+
+        <!-- Newsletter section start -->
+        <section class="newsletter-sec p-t-50 p-b-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>
+                          obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="input-group newsletter">
+                            <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter section end -->
+
+

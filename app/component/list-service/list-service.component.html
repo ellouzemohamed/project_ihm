@@ -1,0 +1,81 @@
+
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-area">
+                            <h1>Nos Services</h1>
+                            <ul>
+                                <li><a [routerLink]="['/']">acceuil</a></li>
+
+                                <li>/</li>
+                                <li>Nos Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+
+        <!-- Services section start -->
+        <section class=" p-b-100 section-white">
+            <div class="container">
+                <div class="row" *ngIf="servicesData" >
+                    <div class="col-md-12">
+                        <div class="wprt-spacer" data-desktop="80" data-mobi="60" data-smobi="60" style="height:80px"></div>
+                    </div><!-- /.col-md-12 -->
+
+
+
+                       <div *ngFor="let service of servicesData" class="col-md-4">
+
+
+                          <div class="service-item clearfix">
+
+    <div class="thumb"><img style="width: 360px; height: 240px" src="{{ global.apiURL }}/{{ getImage(service.image) }}" alt="image"></div>
+                              <div class="service-item-wrap">
+                                  <h3 class="title font-size-18"><a [routerLink]="['/service/' + service.id_service]" >{{ service.nom_service }}</a></h3>
+                                  <p class="desc" [innerHTML]="SubstrService(service.designation_service)">  </p>
+                                  <a [routerLink]="['/service/' + service.id_service]"    class="wprt-button small rounded-3px">LIRE LA SUITE</a>
+                              </div>
+                          </div>
+
+                          <div class="wprt-spacer" data-desktop="55" data-mobi="40" data-smobi="40" style="height:55px"></div>
+
+                    </div><!-- /.col-md-4 -->
+
+
+                    <div class="col-md-12">
+                      <div class="wprt-spacer" data-desktop="80" data-mobi="60" data-smobi="60" style="height:80px"></div>
+                  </div><!-- /.col-md-12 -->
+
+              </div>
+            </div>
+        </section>
+        <!-- Services section end -->
+
+        <!-- Newsletter section start -->
+        <section class="newsletter-sec p-t-50 p-b-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>
+                          obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="input-group newsletter">
+                            <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter section end -->

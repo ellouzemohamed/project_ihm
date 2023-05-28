@@ -1,0 +1,126 @@
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="breadcrumb-area">
+                          <h1>Actualités</h1>
+                          <ul>
+                            <li><a [routerLink]="['/']">acceuil</a></li>
+                            <li>/</li>
+                              <li>Actualités</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Page title section end -->
+
+      <!-- Blog page section start -->
+      <section class="section-light-grey p-t-70 p-b-70">
+          <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <!-- Sidebar widget area start -->
+                  <div class="right-sidebar">
+                      <div class="blog-widget">
+                          <div class="widget-title">
+                              <h3>Recherche</h3>
+                              <span class="divider"></span>
+                          </div>
+
+                              <input (change)="setCherche($event.srcElement.value)" placeholder="Keywords..." type="text" name="titre"  />
+                              <button style="max-height: 43px;
+                              margin-top: 71px;
+                              margin-right: 26px;" type="button" >
+                                  <i class="fa fa-search"></i>
+                              </button>
+
+                      </div>
+                      <div  style="margin: 0;
+                      padding: 0;
+                      padding-left: 15px;" class="blog-widget">
+                          <div class="widget-title">
+                              <h3> Publicité</h3>
+                              <span class="divider"></span>
+                          </div>
+                      </div>
+
+
+
+                          <div  *ngFor="let item of pubData" class="blog-widget">
+
+                              <img style="width: 303px;" src="{{ global.apiURL + item.piece_joindre }}" alt="">
+                          </div>
+
+                  </div>
+                  <!-- Sidebar widget area end -->
+              </div>
+                  <div class="col-md-8">
+                      <div *ngIf="actualiteData" class="blog-post-area">
+                          <div *ngFor="let item of actualiteData"  class="row">
+                              <div class="col-md-12">
+                                  <div class="blog-area">
+                                      <div class="blog-img">
+                                          <a href="#">
+                                              <img src="{{global.apiURL}}/{{item.image}}" alt="blog-image">
+                                          </a>
+                                      </div>
+                                      <div class="blog-head">
+                                          <h3 class="m-b-0">
+                                              <a [routerLink]="['/actualite/'+ item.id]" >{{item.titre}}</a>
+                                          </h3>
+                                      </div>
+                                      <div class="blog-meta">
+                                          <p>
+                                              <i class="fa fa-user"></i> {{item.admin.username}}
+                                          </p>
+                                          <p>
+                                              <i class="fa fa-calendar"></i> {{item.date_pub}}
+                                          </p>
+                                          <p>
+                                              <i class="fa fa-commenting-o"></i> {{item.commentaire.length}} comments
+                                          </p>
+                                      </div>
+                                      <div class="blog-content">
+                                          <p>
+                                            {{item.description}}
+                                                                         </p>
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Blog page section end -->
+
+      <!-- Newsletter section start -->
+      <section class="newsletter-sec p-t-50 p-b-50">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                      <h2>
+
+obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                      </h2>
+                  </div>
+                  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                      <div class="input-group newsletter">
+                          <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                          <div class="input-group-btn">
+                              <button class="btn btn-default" type="submit">
+                                  Subscribe
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Newsletter section end -->

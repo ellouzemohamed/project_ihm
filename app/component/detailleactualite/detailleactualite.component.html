@@ -1,0 +1,175 @@
+
+        <!-- Page title section start -->
+        <section class="page-title p-t-120 p-b-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-area">
+                            <h1>Blog Detail</h1>
+                            <ul>
+                                <li><a href="index-2.html">Home</a></li>
+                                <li>/</li>
+                                <li>Blog Detail</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page title section end -->
+
+        <!-- Blog detail section start -->
+        <section class="section-light-grey p-t-70 p-b-70">
+            <div class="container">
+                <div class="row">
+                    <div *ngIf="data" class="col-md-8">
+                        <div class="blog-detail">
+                            <div class="blog-area">
+                                <div class="blog-img">
+                                    <a href="#">
+                                        <img src="{{ global.apiURL }}{{ data.actualite.image }}" alt="blog-image">
+                                    </a>
+                                </div>
+                                <div class="blog-head">
+                                    <h3>
+                                        <a [routerLink]="['/actualite' +  data.actualite.id  ]"  >{{ data.actualite.titre }}</a>
+                                    </h3>
+                                </div>
+                                <div class="blog-meta">
+                                    <p>
+                                        <i class="fa fa-user"></i> By {{ data.actualite.admin.username }}
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-calendar"></i>  {{data.actualite.date_pub }}
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-commenting-o"></i> {{ data.actualite.commentaire.lenght }} comments
+                                    </p>
+                                </div>
+                                <div class="blog-content">
+                                    <p>
+                                        {{ data.actualite.description }}
+                                    </p>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- Comment form start -->
+                            <div class="quote-form m-b-30" id="comment">
+                                <form [formGroup]="formdata" (ngSubmit) = "onClickSubmit()" >
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="blog-heading m-t-10">
+                                                <h3>LEAVE A COMMENT</h3>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <input hidden type="text" id="idReply" name="id_reply" >
+                                        <div class="col-md-12">
+                                            <p>
+                                                <label>Leave a comment</label>
+                                                <textarea  formControlName="commentaire" placeholder="Comment" name="commentaire"></textarea>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>
+                                                <input type="submit" name="" value="Post Comment">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Comment form end -->
+
+
+                            <div class="media blog-area p-all-15" id="comment-1">
+
+
+
+                                    <!-- Comment chain 1 start -->
+                                    <div *ngFor="let item of data.actualite.commentaire" class="clerafix">
+                                        <div class="media-left">
+                                            <img src="{{ global.apiURL }}image/user.png" class="media-object">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="comment-area">
+                                                <div class="author-area">
+                                                    <h6 *ngIf="item.user" class="media-heading">
+                                                        {{ item.user.name }}
+                                                    </h6>
+                                                    <abbr>{{ item.date }}</abbr>
+                                                </div>
+
+                                                <p>
+                                                    {{ item.commentaire }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                            <!-- Blog pagination start -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="blog-pagging">
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fa fa-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-angle-double-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Blog pagination end -->
+                        </div>
+                    </div>
+                    <div *ngIf="data" class="col-md-4">
+                        <!-- Sidebar widget area start -->
+                        <div class="right-sidebar">
+                            <div  style="margin: 0;
+                            padding: 0;
+                            padding-left: 15px;" class="blog-widget">
+                                <div class="widget-title">
+                                    <h3> Publicité</h3>
+                                    <span class="divider"></span>
+                                </div>
+                            </div>
+
+
+                                <div *ngFor="let item of data.publicite.data" class="blog-widget">
+
+                                    <img src="{{ global.apiURL }}{{ item.piece_joindre }}" alt="">
+                                </div>
+
+                        </div>
+                        <!-- Sidebar widget area end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog detail section end -->
+

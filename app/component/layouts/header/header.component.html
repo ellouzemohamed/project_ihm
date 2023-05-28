@@ -1,0 +1,158 @@
+  <!-- Header Area Start -->
+  <header class="header-portion">
+    <!-- Top bar start -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="top-bar-left">
+                        <p>Avez vous des questions ? +216 97 559 344</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="top-bar-right">
+                        <div class="social-links">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top bar end -->
+
+    <!-- Middle bar start -->
+    <div class="middle-bar">
+        <div class="container">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <a class="brand-logo" [routerLink]="['/']"  >
+                    <img src="assets/images/logo-1.png" alt="site logo" />
+                </a>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="middle-bar-cta">
+                    <div class="cta-area">
+                        <div class="cta-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="logo-right-text">
+                            <span>
+                              Appelez-nous </span>
+                            <p>tous les jours de 9:00h à 17:00h</p>
+                        </div>
+                    </div>
+                    <div class="cta-area">
+                        <div class="cta-icon">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <div class="logo-right-text">
+                            <span>Envoyez-Nous Un Mail</span>
+                            <p>contact@bestsol.tn</p>
+                        </div>
+                    </div>
+                    <div class="cta-area">
+                        <div class="cta-icon">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <div class="logo-right-text">
+                            <span>Address</span>
+                            <p>Route de Tunis Monji Slim .<br> Imm Amen2 B9 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Middle bar end -->
+
+    <!-- Main navigation start -->
+    <div class="main-navigation">
+        <div class="container">
+            <div class="main-navigation-content">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">
+                        <nav class="navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="navbar-menu">
+                                <ul class="nav navbar-nav mobile-menu">
+                                    <li><a [routerLink]="['/home']" routerLinkActive="active">Accueil</a></li>
+                                    <li><a [routerLink]="['/fournisseurs']" routerLinkActive="active" >Nos Fournisseurs</a></li>
+                                    <li> <a [routerLink]="['/services']" routerLinkActive="active" > Nos Services</a>
+                                        <span class="has-dropdown"></span>
+                                        <ul *ngIf="services" class="dropdown-menu">
+                                            <li *ngFor="let item of services">
+                                                <a [routerLink]="['/service/' + item.id_service]"  >{{item.nom_service}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                      <li><a [routerLink]="['/appel/offre']" routerLinkActive="active" >Nos Offres</a>
+                                        <span class="has-dropdown"></span>
+                                        <ul class="dropdown-menu">
+                                            <li><a [routerLink]="['/appel/offre']" routerLinkActive="active" >Liste Appel d'offre</a></li>
+                                            <li><a [routerLink]="['/ajout/offre']" routerLinkActive="active" >Ajout Offre</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a  [routerLink]="['/actualite']" routerLinkActive="active" >Actualité</a>
+
+                                    </li>
+                                    <li><a [routerLink]="['/contact']" routerLinkActive="active" >Contact</a>
+                                    </li>
+                                    <li>
+                                      <div style="    width: 10px;
+                                      height: 10px;
+                                      border-radius: 50%;
+                                      position: absolute;
+                                      background-color: red;
+                                      top: 14px;
+                                      left: 20px;"></div>
+                                      <i style="    color: white;
+                                      margin: auto;
+                                      font-size: 19px;
+                                      margin-top: 15px;
+                                      margin-left: 10px;" class="fa fa-bell" aria-hidden="true"></i>
+                                      <span class="has-dropdown"></span>
+                                      <ul *ngIf="notification" class="dropdown-menu" [innerHTML]="setnotification()" >
+
+
+                                      </ul>
+
+                                  </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-md-3 col-sm-1 hidden-sm hidden-xs">
+                      <ul >
+                        <li *ngIf="!(id && id != 0)">
+                            <a id="getlogin" href="#" data-toggle="modal" data-target="#myModal" class="quote">Login / Register</a>
+                        </li>
+                        <li *ngIf="id && id != 0" style="cursor: pointer;" (click)="dropmenuprofile()" >
+                          <a   class="quote" style="cursor: pointer;" >Bienvenue {{ name }}</a>
+                          <span class="has-dropdown"></span>
+                          <ul id="menuprofile" style="color: white; width: 90%;  margin-left: 16px; background-color: #ff9800;"  class="menu-login dropdown-menu">
+                              <li><a target="_blank"  href="{{global.apiURL}}user/edit/profile">Profile</a></li>
+                              <li><a target="_blank" href="{{global.apiURL}}user/liste/offre">offre</a></li>
+                              <li (click)="logout()"><a   >Déconnexion</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main navigation end -->
+</header>
+<!-- Header Area End -->

@@ -1,0 +1,128 @@
+@extends('index') @section('content')
+<!-- Page title section start -->
+<section style="background: url(../../../assets/images/appeloffre.jpg) no-repeat;    background-position-y: center;" class="page-title p-t-120 p-b-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-area">
+                    <h1 style="font-size: 83px;"><span>Publier vos offres  </span> </h1>
+                    <h1 style="font-size: 83px;padding-top: 30px;"><span> gratuitement </span> </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page title section end -->
+
+<!-- Contact page section start -->
+<section class="contact-us section-light-grey p-t-70 p-b-70">
+    <div class="container">
+        <div class="row m-t-20">
+            <div class="col-md-12">
+                <h1>Économisez du temps et de l'argent ! Assurez-vous les meilleures offres disponibles rapidement et gérez correctement vos prochains offres</h1>
+                <p style="    font-size: 21px;  padding-bottom: 26px;">
+                    Déposez vos prochains appels d'offre sur notre plateforme et assurez-vous les meilleures opportunités d'achat et la réception illimitée des offres directement des fournisseurs concernés.
+                </p>
+            </div>
+            <div class="col-md-2 col-sm-12"></div>
+
+            <div style="padding-top: 25px" class="col-md-12 col-sm-12">
+                <div class="quote-form m-b-30">
+                    <form [formGroup]="formdata" (ngSubmit)="setOffre()" role="form" id="contactForm" class="shake" enctype="multipart/form-data">
+                        <div class="alert alert-danger" *ngIf="errors">
+                            <ul>
+                                <li *ngIf="errors.nom">{{errors.nom[0]}}</li>
+                                <li *ngIf="errors.service">{{errors.service[0]}}</li>
+                                <li *ngIf="errors.description">{{errors.description[0]}}</li>
+                                <li *ngIf="errors.date_exp">{{errors.date_exp[0]}}</li>
+
+                            </ul>
+                        </div>
+                        <div class="alert alert-success" *ngIf="successControll">
+                            <ul>
+                                <li>votre offre a été bien enregistrer</li>
+                            </ul>
+                        </div>
+                        <div id="msgSubmit" class="alert-danger alert hidden"></div>
+                        <h1 style="color: black; font-family: sans-serif;font-size: 30px;">
+                            DEPOSER UN OFFRE
+                        </h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    <label> Nom d'offre</label>
+                                    <input type="text" formControlName="nom" name="nom" id="name" placeholder="Nom d'offre" title="* Please provide your name" required="required">
+                                </p>
+                            </div>
+
+                            <div class="col-md-6" style="margin-top: 6px;">
+
+                                <label for="service">Service : </label>
+                                <select formControlName="service" *ngIf="listeService" style="height: 51px;" class="form-control" name="service" id="service">
+                                        <option [value]=""> Choisir service </option>
+                                       <option *ngFor="let item of listeService" [value]="item.id_service">{{ item.nom_service}}</option>
+
+
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <p>
+                                    <label>Description</label>
+                                    <textarea formControlName="description" name="description" id="description" placeholder="Comment" title="* Please type a message"></textarea>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label>Image : </label>
+                                    <input (change)="onSelectFile($event)" type="file" name="images[]" id="images" required="required" multiple>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label>Date expiration </label>
+                                    <input formControlName="date_exp" type="date" name="date_exp" id="email" required="required">
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <input type="submit" id="form-submit" value="Envoyer">
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact page section end -->
+
+<!-- Newsletter section start -->
+<section class="newsletter-sec p-t-50 p-b-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <h2>
+                    obtenir les dernières nouvelles de<strong> Tunexpo</strong>
+                </h2>
+            </div>
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                <div class="input-group newsletter">
+                    <input class="form-control" placeholder="Subscribe our newsletter" type="text">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                                    Subscribe
+                                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Newsletter section end -->
